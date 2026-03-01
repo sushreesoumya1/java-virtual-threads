@@ -6,6 +6,6 @@ public record TripPlan(String airportCode,
                        List<Accommodation> accommodations,
                        Weather weather,
                        List<Event> events,
-                       LocalRecomendations localRecomendations,
+                       LocalRecommendations localRecomendations,
                        Transportation transportation) {
 }

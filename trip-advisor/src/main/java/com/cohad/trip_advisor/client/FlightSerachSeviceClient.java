@@ -1,0 +1,22 @@
+package com.cohad.trip_advisor.client;
+
+import com.cohad.trip_advisor.dto.Flight;
+import lombok.RequiredArgsConstructor;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.web.client.RestClient;
+
+import java.util.List;
+
+@RequiredArgsConstructor
+public class FlightSerachSeviceClient {
+    private final RestClient restClient;
+
+    public List<Flight> getFlights(String departure, String arrival){
+        return this.restClient.get()
+                .uri("/{departure}/{arrival}", departure, arrival)
+                .retrieve()
+                .body(new ParameterizedTypeReference<List<Flight>>() {
+                });
+    }
+}
+
