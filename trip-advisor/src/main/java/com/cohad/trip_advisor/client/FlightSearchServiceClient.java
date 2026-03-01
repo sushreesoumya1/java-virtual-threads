@@ -8,7 +8,7 @@ import org.springframework.web.client.RestClient;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class FlightSerachSeviceClient {
+public class FlightSearchServiceClient {
     private final RestClient restClient;
 
     public List<Flight> getFlights(String departure, String arrival){
