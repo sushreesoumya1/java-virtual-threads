@@ -37,7 +37,7 @@ public class TripPlanService {
         this.localRecommendationServiceClient = localRecommendationServiceClient;
         this.executor = executor;
     }
-    public TripPlan getTriPplan(String airportCode){
+    public TripPlan getTripPlan(String airportCode){
         var events = this.executor.submit(() -> this.eventServiceClient.getEvents(airportCode));
         var weather = this.executor.submit(() -> this.weatherServiceClient.getWeather(airportCode));
         var accommodations = this.executor.submit(() -> this.accommodationServiceClient.getAccommodations(airportCode));
