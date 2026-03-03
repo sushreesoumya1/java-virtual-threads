@@ -5,11 +5,15 @@ import com.cohad.trip_advisor.dto.TripPlan;
 import com.cohad.trip_advisor.dto.TripReservationRequest;
 import com.cohad.trip_advisor.service.TripPlanService;
 import com.cohad.trip_advisor.service.TripReservationService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("trip")
 public class TripController {
+
+    private static final Logger log = LoggerFactory.getLogger(TripController.class);
 
     private final TripPlanService planService;
     private final TripReservationService reservationService;
@@ -21,6 +25,7 @@ public class TripController {
 
     @GetMapping("{airportCode}")
     public TripPlan planTrip(@PathVariable String airportCode) {
+        log.info("Airport code: {}, is virtual: {}", airportCode, Thread.currentThread().isVirtual());
         return this.planService.getTripPlan(airportCode);
     }
 
